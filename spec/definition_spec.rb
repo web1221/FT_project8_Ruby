@@ -23,8 +23,8 @@ describe('#Definitions') do
     it('returns definitons of words') do
       definition = Definitions.new("a way to time travel", @word.id, nil)
       definition.save()
-      definiton2 = Definitions.new("oppisite of dimmer, the act out making a light brighter", @word.id, nil)
-      definition.save()
+      definition2 = Definitions.new("oppisite of dimmer, the act out making a light brighter", @word.id, nil)
+      definition2.save()
       expect(Definitions.all).to(eq([definition, definition2]))
     end
   end

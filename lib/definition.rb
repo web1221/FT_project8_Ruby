@@ -6,7 +6,7 @@ class Definitions
   @@total_rows = 0
 
   def initialize(definition, word_id, id)
-    @defintion = definition
+    @definition = definition
     @word_id = word_id
     @id = id || @@total_rows += 1
   end
@@ -18,5 +18,13 @@ class Definitions
   def self.clear
     @@definitions = {}
     @@total_rows = 0
-    end
+  end
+
+  def save
+    @@definitions[self.id] = Definitions.new(self.definition, self.word_id, self.id)
+  end
+
+  def self.all
+    @@definitions.values
+  end
 end
