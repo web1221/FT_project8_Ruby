@@ -18,4 +18,22 @@ describe('#Definitions') do
       expect(definition).to(eq(definition2))
     end
   end
+
+  describe('.all') do
+    it('returns definitons of words') do
+      definition = Definitions.new("a way to time travel", @word.id, nil)
+      definition.save()
+      definiton2 = Definitions.new("oppisite of dimmer, the act out making a light brighter", @word.id, nil)
+      definition.save()
+      expect(Definitions.all).to(eq([definition, definition2]))
+    end
+  end
+
+  describe('#save') do
+    it('saves a definition') do
+      definition = Definitions.new("a way to time travel", @word.id, nil)
+      definition.save()
+      expect(Definitions.all).to(eq([definition]))
+    end
+  end
 end
