@@ -25,4 +25,7 @@ class Word
     @@words[self.id] = Word.new(self.word, self.id)
   end
 
+  def self.find(id)
+    @@words[id]
+  end
 end
