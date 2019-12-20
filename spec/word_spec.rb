@@ -36,4 +36,5 @@ describe('#Word') do
       Word.clear()
       expect(Word.all).to(eq([]))
     end
+  end
 end
