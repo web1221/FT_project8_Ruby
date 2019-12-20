@@ -27,4 +27,8 @@ class Definitions
   def self.all
     @@definitions.values
   end
+
+  def self.find(id)
+    @@definitions[id]
+  end
 end
