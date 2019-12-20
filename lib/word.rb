@@ -1,4 +1,6 @@
 class Word
+  attr_accessor :word, :id
+
   @@words = {}
   @@total_rows = 0
   def initialize(word, id)
@@ -8,6 +10,10 @@ class Word
 
   def self.all
     @@words.values()
+  end
+
+  def save
+
   end
 
 end
