@@ -11,6 +11,16 @@ describe('#Definitions') do
     @word.save()
   end
 
+  describe('.clear') do
+    it('clears all definitions') do
+    definition = Definitions.new("a way to time travel", @word.id, nil)
+    definition.save()
+    definition2 = Definitions.new("oppisite of dimmer, the act out making a light brighter", @word.id, nil)
+    definition2.save()
+    Definitions.clear()
+    expect(Definitions.all).to(eq([]))
+    end
+  end
   describe('#==') do
     it('is the same definiton is it has the same attributes') do
       definition = Definitions.new("a way to time travel", @word.id, nil)
@@ -34,6 +44,16 @@ describe('#Definitions') do
       definition = Definitions.new("a way to time travel", @word.id, nil)
       definition.save()
       expect(Definitions.all).to(eq([definition]))
+    end
+  end
+
+  describe('.find') do
+    it("finds a definitons by its id") do
+      definition = Definitions.new("a way to time travel", @word.id, nil)
+      definition.save()
+      definition2 = Definitions.new("oppisite of dimmer, the act out making a light brighter", @word.id, nil)
+      definition2.save()
+      expect(Definitions.find(definition.id)).to(eq(definition))
     end
   end
 end
