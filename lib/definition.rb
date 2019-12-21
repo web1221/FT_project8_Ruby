@@ -11,18 +11,12 @@ class Definitions
     @id = id || @@total_rows += 1
   end
 
-  def ==(definition_to_compare)
-    (self.definition() == definition_to_compare.definition()) && (self.word_id() == definition_to_compare.word_id())
-  end
 
   def self.clear
     @@definitions = {}
     @@total_rows = 0
   end
 
-  def save
-    @@definitions[self.id] = Definitions.new(self.definition, self.word_id, self.id)
-  end
 
   def self.all
     @@definitions.values
@@ -32,8 +26,22 @@ class Definitions
     @@definitions[id]
   end
 
-  def word
-    Word.find(self.word_id)
+  def self.find_by_word(w_id)
+    definitions = []
+    @@definitions.values.each do |defi|
+      if defi.word_id == w_id
+        definitions.push(defi)
+      end
+    end
+    definitions
+  end
+  
+  def save
+    @@definitions[self.id] = Definitions.new(self.definition, self.word_id, self.id)
+  end
+
+  def ==(definition_to_compare)
+    (self.definition() == definition_to_compare.definition()) && (self.word_id() == definition_to_compare.word_id())
   end
 
   def update(definition, word_id)
@@ -46,15 +54,9 @@ class Definitions
     @@definitions.delete(self.id)
   end
 
-  def self.find_by_word(w_id)
-    definitions = []
-    @@definitions.values.each do |defi|
-      if defi.word_id == w_id
-        definitions.push(defi)
-      end
-    end
-    definitions
-  end
 
+  def word
+    Word.find(self.word_id)
+  end
 
 end
