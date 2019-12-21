@@ -96,4 +96,15 @@ describe('#Definitions') do
       expect(definition.word()).to(eq(@word))
     end
   end
+
+  describe('#definitions') do
+    it('returns a definition belonging to a word') do
+      word2 = Word.new("Billboard", nil)
+      word2.save()
+      definition = Definitions.new("a way to time travel", @word.id, nil)
+      definition.save()
+      definition2 = Definitions.new("oppisite of dimmer, the act of making a light brighter", word.id, nil)
+      definition2.save()
+      expect(word.definitions).to(eq([defintion, definition2]))
+    end
 end
