@@ -64,6 +64,16 @@ describe('#Definitions') do
       definition.update("oppisite of dimmer, the act of making a light brighter", @word.id)
       expect(definition.definition).to(eq("oppisite of dimmer, the act of making a light brighter"))
     end
+  end
 
+  describe('#delete') do
+    it('deletes a definition by id') do
+      definition = Definitions.new("a way to time travel", @word.id, nil)
+      definition.save()
+      definition2 = Definitions.new("oppisite of dimmer, the act of making a light brighter", @word.id, nil)
+      definition2.save()
+      definition.delete()
+      expect(Definitions.all).to(eq([definition2]))
+    end
   end
 end
