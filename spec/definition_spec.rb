@@ -76,4 +76,16 @@ describe('#Definitions') do
       expect(Definitions.all).to(eq([definition2]))
     end
   end
+
+  describe('.find_by_word') do
+    it('finds defintions for a word') do
+      word2 = Word.new("Billboard", nil)
+      word2.save()
+      definition = Definitions.new("a way to time travel", @word.id, nil)
+      definition.save()
+      definition2 = Definitions.new("oppisite of dimmer, the act of making a light brighter", word2.id, nil)
+      definition2.save()
+      expect(Definitions.find_by_word(word2.id)).to(eq([definition2]))
+    end
+  end
 end
