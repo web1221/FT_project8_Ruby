@@ -15,7 +15,7 @@ describe('#Definitions') do
     it('clears all definitions') do
     definition = Definitions.new("a way to time travel", @word.id, nil)
     definition.save()
-    definition2 = Definitions.new("oppisite of dimmer, the act out making a light brighter", @word.id, nil)
+    definition2 = Definitions.new("oppisite of dimmer, the act of making a light brighter", @word.id, nil)
     definition2.save()
     Definitions.clear()
     expect(Definitions.all).to(eq([]))
@@ -33,7 +33,7 @@ describe('#Definitions') do
     it('returns definitons of words') do
       definition = Definitions.new("a way to time travel", @word.id, nil)
       definition.save()
-      definition2 = Definitions.new("oppisite of dimmer, the act out making a light brighter", @word.id, nil)
+      definition2 = Definitions.new("oppisite of dimmer, the act of making a light brighter", @word.id, nil)
       definition2.save()
       expect(Definitions.all).to(eq([definition, definition2]))
     end
@@ -51,9 +51,19 @@ describe('#Definitions') do
     it("finds a definitons by its id") do
       definition = Definitions.new("a way to time travel", @word.id, nil)
       definition.save()
-      definition2 = Definitions.new("oppisite of dimmer, the act out making a light brighter", @word.id, nil)
+      definition2 = Definitions.new("oppisite of dimmer, the act of making a light brighter", @word.id, nil)
       definition2.save()
       expect(Definitions.find(definition.id)).to(eq(definition))
     end
+  end
+
+  describe('#update') do
+    it('it will update a definition or a word') do
+      definition = Definitions.new("a way to time travel", @word.id, nil)
+      definition.save()
+      definition.update("oppisite of dimmer, the act of making a light brighter", @word.id)
+      expect(definition.definition).to(eq("oppisite of dimmer, the act of making a light brighter"))
+    end
+
   end
 end
