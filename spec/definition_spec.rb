@@ -78,7 +78,7 @@ describe('#Definitions') do
   end
 
   describe('.find_by_word') do
-    it('finds defintions for a word') do
+    it('finds definitions for a word') do
       word2 = Word.new("Billboard", nil)
       word2.save()
       definition = Definitions.new("a way to time travel", @word.id, nil)
