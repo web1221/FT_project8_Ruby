@@ -49,4 +49,6 @@ describe('#Word') do
       expect(Word.find(word.id)).to(eq(word))
     end
   end
+
+
 end

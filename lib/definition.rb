@@ -41,4 +41,8 @@ class Definitions
     self.word_id = word_id
     @@definitions[self.id] = Definitions.new(self.definition, self.word_id, self.id)
   end
+
+  def delete
+    @@definitions.delete(self.id)
+  end
 end
