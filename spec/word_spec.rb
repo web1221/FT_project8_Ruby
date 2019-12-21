@@ -47,7 +47,7 @@ describe('#Word') do
   describe('#delete') do
     it('deletes a word by id') do
       @word.delete()
-      expect(Word.all).to(eq(@word2))
+      expect(Word.all).to(eq([@word2]))
     end
   end
 
