@@ -17,6 +17,10 @@ class Word
     @@total_rows = 0
   end
 
+  def self.find(id)
+    @@words[id]
+  end
+
   def ==(word_to_compare)
     self.word() == word_to_compare.word
   end
@@ -25,7 +29,8 @@ class Word
     @@words[self.id] = Word.new(self.word, self.id)
   end
 
-  def self.find(id)
-    @@words[id]
+  def delete
+
   end
+
 end

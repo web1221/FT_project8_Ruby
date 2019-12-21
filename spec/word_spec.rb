@@ -4,9 +4,15 @@ require('word')
 describe('#Word') do
   before(:each) do
     Word.clear()
+    @word = Word.new("universe", nil)
+    @word.save()
+    @word2 = Word.new("time", nil)
+    @word2.save()
   end
+
   describe('.all') do
     it('is empty at first') do
+      Word.clear()
       expect(Word.all).to(eq([]))
     end
   end
@@ -21,20 +27,12 @@ describe('#Word') do
 
   describe('#save') do
     it('will save words') do
-      word1 = Word.new("universe", nil)
-      word1.save()
-      word2 = Word.new("template", nil)
-      word2.save()
-      expect(Word.all).to(eq([word1, word2]))
+      expect(Word.all).to(eq([@word, @word2]))
     end
   end
 
   describe('.clear') do
     it("clears all albums") do
-      word1 = Word.new("universe", nil)
-      word1.save()
-      word2 = Word.new("template", nil)
-      word2.save()
       Word.clear()
       expect(Word.all).to(eq([]))
     end
@@ -42,13 +40,15 @@ describe('#Word') do
 
   describe('.find') do
     it('finds a word by id') do
-      word = Word.new("places", nil)
-      word.save()
-      word2 = Word.new("catch", nil)
-      word2.save()
-      expect(Word.find(word.id)).to(eq(word))
+      expect(Word.find(@word.id)).to(eq(@word))
     end
   end
 
+  describe('#delete') do
+    it('deletes a word by id') do
+      @word.delete()
+      expect(Word.all).to(eq(@word2))
+    end
+  end
 
 end
