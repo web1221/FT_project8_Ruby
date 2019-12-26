@@ -35,7 +35,7 @@ class Definitions
     end
     definitions
   end
-  
+
   def save
     @@definitions[self.id] = Definitions.new(self.definition, self.word_id, self.id)
   end

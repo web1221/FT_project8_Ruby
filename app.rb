@@ -38,8 +38,9 @@ delete('/words/:id') do
 end
 
 get('/words/:id/definition/:definition_id') do
-  @definition = Definitions.new(params[:definition_id].to_i())
-  erb(:word)
+  @word = Word.find(params[:id].to_i())
+  @definition = Definitions.new(params[:definition_id].to_i(), @word.id, nil)
+  erb(:definition)
 end
 
 post('/words/:id/definition') do
@@ -51,14 +52,14 @@ end
 
 patch('words/:id/definition/:definition_id') do
   @word = Word.find(params[:id].to_i())
-  definition = Definition.find(params[:definition_id].to_i())
+  definition = Definitions.find(params[:definition_id].to_i())
   definition.update(params[:definition], @word.id)
   erb(:word)
 end
 
 delete('/words/:id/definition/:definition_id') do
-  definition = Definitions.fine(params[:definition_id].it_i())
-  definition.delete
+  @definition = Definitions.find(params[:definition_id].to_i())
+  @definition.delete
   @word = Word.find(params[:id].to_i())
   erb(:word)
 end
