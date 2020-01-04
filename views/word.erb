@@ -1,6 +1,5 @@
-<h4>Word: <%= @word.word %></h4>
-<h3>Definition:</h3>
-
+<h2>Word: <%= @word.word.capitalize %></h2>
+<h3>Definitions</h3>
 <% if @word.definitions %>
 <ul>
   <% @word.definitions.each do |defi| %>

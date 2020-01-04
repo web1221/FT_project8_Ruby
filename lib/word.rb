@@ -25,6 +25,10 @@ class Word
     self.word() == word_to_compare.word
   end
 
+  def update(word)
+    @word = word
+  end
+
   def save
     @@words[self.id] = Word.new(self.word, self.id)
   end

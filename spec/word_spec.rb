@@ -51,4 +51,11 @@ describe('#Word') do
     end
   end
 
+  describe('#update') do
+    it('updates a word') do
+      @word.update("People")
+      expect(@word.word).to(eq("People"))
+    end
+  end
+
 end
