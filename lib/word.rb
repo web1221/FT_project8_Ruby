@@ -1,5 +1,5 @@
 class Word
-  attr_reader :word, :id
+  attr_accessor :word, :id
 
   @@words = {}
   @@total_rows = 0
