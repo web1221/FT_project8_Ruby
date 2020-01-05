@@ -52,24 +52,34 @@ delete('/words/:id') do
   erb(:words)
 end
 
-get('/words/:id/definition/:definition_id') do
-  @word = Word.find(params[:id].to_i())
-  @definition = Definitions.new(params[:definition_input].to_i(), @word.id, nil)
-  erb(:definition)
-end
-
 post('/words/:id/definition') do
-  @word = Word.find(params[:id].to_i())
-  @definition = Definitions.new(params[:definition_input], @word.id, nil)
-  @definition.save()
+  @words = Word.find(params[:id].to_i())
+  definition = Definitions.new(params[:definition_input], @words.id, nil)
+  definition.save()
   erb(:word)
 end
 
-patch('/words/:id/definition/:definition_id') do
-  @word = Word.find(params[:id].to_i())
-  definition = Definitions.find(params[:definition_id].to_i())
-  definition.update(params[:definition_input], @word.id)
+get('/words/:id/definition/:definition_id') do
+  @words = Word.find(params[:id].to_i())
+  @definitions = Definitions.find(params[:definition_id])
+  @definition = Definitions.new(params[:definition_input], @words.id, nil)
   erb(:definition)
+end
+
+get('/words/:id/definition/:definition_id/edit') do
+  @definition = Definitions.find(params[:definition_id].to_i())
+  erb(:edit_def)
+end
+
+patch('/words/:id/definition/:definition_id') do
+  # @words = Word.find(params[:id].to_i())
+  # definition = Definitions.find(params[:definition_id].to_i())
+  # definition.update(params[:definition_input], @words.id)
+  # erb(:word)
+  @definitions = Definitions.find(params[:id].to_i())
+  @definitions.update(params[:new_def])
+  @definitions = Definitions.all
+  erb(:word)
 end
 
 delete('/words/:id/definition/:definition_id') do
