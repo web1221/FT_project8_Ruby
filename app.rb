@@ -54,7 +54,7 @@ end
 
 get('/words/:id/definition/:definition_id') do
   @word = Word.find(params[:id].to_i())
-  @definition = Definitions.new(params[:definition_id].to_i(), @word.id, nil)
+  @definition = Definitions.new(params[:definition_input].to_i(), @word.id, nil)
   erb(:definition)
 end
 
