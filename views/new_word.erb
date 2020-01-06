@@ -1,11 +1,15 @@
+<h1 class="title">The Word Worm</h1>
+<div class="content">
+
 <h1>Add a new word</h1>
 
 <form action="/words" method="post">
   <div class="form-group">
     <label for="word_input">Enter a new word!</label>
-    <input id="n" name="word_input" class="form-control" type="text">
+    <input id="n" name="word_input" class="form-control" type="text" required>
     <label for="definition_input">Enter definition:</label>
-    <input name="definition_input" class="form-control" type="text">
+    <input name="definition_input" class="form-control" type="text" required>
   </div>
-  <button type="submit" class="btn">Go!</button>
+  <button class="buttons"type="submit" class="btn">Go!</button>
 </form>
+</div>

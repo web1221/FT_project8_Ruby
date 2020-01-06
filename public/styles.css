@@ -13,3 +13,62 @@ body {
   font-family: 'Luckiest Guy', cursive;
   font-size: 80px;
 }
+
+.content{
+  width: 500px;
+}
+
+h1{
+  text-align: center;
+  text-decoration: underline overline;
+}
+
+h3{
+  text-transform: uppercase;
+  color: white;
+  font-size: 40px;
+}
+
+h4{
+  font-size: 30px;
+  color: white;
+  padding-top: 40px;
+}
+
+ul{
+  list-style: none;
+  font-size: 20px;
+}
+
+ol{
+  font-size: 20px;
+  list-style: decimal;
+}
+
+.buttons{
+  text-align: center;
+  font-size: 10px;
+  text-transform: uppercase;
+  background-color: #ece432;
+  padding: 8px;
+  width: 120px;
+}
+
+.buttons a{
+  color: black;
+}
+
+.buttons a:hover{
+  text-decoration: none;
+}
+
+.buttons:hover{
+  background-color: #dfd72d;
+}
+
+#topButtonMargin{
+  margin-top: 5px;
+}
+button{
+  margin-bottom: 5px;
+}

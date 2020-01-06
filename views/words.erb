@@ -1,15 +1,20 @@
-<h1>The Word Definer</h1>
+<h1 class="title">The Word Worm</h1>
+<div class="content">
 
 <h3>Word list</h3>
 
 <% if @words.any? %>
   <ul>
     <% @words.each do |word| %>
-      <li><a href="/words/<%= word.id %>"><%= word.word %></a></li>
+      <li><a href="/words/<%= word.id %>"><%= word.word.capitalize %></a></li>
     <% end %>
   </ul>
 <% else %>
   <p>There are currently no records to display.</p>
 <% end %>
-
+<div class="buttons">
 <a href="/words/new">Add a word!</a>
+</div>
+
+
+</div>
