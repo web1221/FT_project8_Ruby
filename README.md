@@ -5,7 +5,7 @@
 #### By _**Angela Weber**_
 
 ## Link to webpage
-__ __
+__https://enigmatic-chamber-36203.herokuapp.com__
 
 ## Description
   _This application was created to demonstrate routing concepts using Ruby with Sinatra. The application allows the user to submit words to a word list and add definitions to words. The user can then enter the a chosen word and see definitions. The application has full CRUD functionality, you can create, read, update, and delete both words and their definitions._
@@ -32,6 +32,7 @@ _This application was built using __Ruby__._
 * __RSPEC__ was used for testing
 * __Pry__ was used for debugging
 * __CSS__ was used for styling
+* __Heroku__ was used for deployment
 
 ### License
 
