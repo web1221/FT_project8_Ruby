@@ -1,4 +1,15 @@
-h1 {
-  text-align: center;
-  text-decoration: underline overline;
+body {
+  background-color: #66d45c;
+}
+
+.container{
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title{
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 80px;
 }
