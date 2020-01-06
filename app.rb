@@ -66,25 +66,19 @@ get('/words/:id/definition/:definition_id') do
   erb(:definition)
 end
 
-get('/words/:id/definition/:definition_id/edit') do
-  @definition = Definitions.find(params[:definition_id].to_i())
-  erb(:edit_def)
-end
 
 patch('/words/:id/definition/:definition_id') do
-  # @words = Word.find(params[:id].to_i())
-  # definition = Definitions.find(params[:definition_id].to_i())
-  # definition.update(params[:definition_input], @words.id)
-  # erb(:word)
-  @definitions = Definitions.find(params[:id].to_i())
-  @definitions.update(params[:new_def])
-  @definitions = Definitions.all
+  @words = Word.find(params[:id].to_i())
+  @definition = Definitions.all
+  # binding.pry
+  definition = Definitions.find(params[:definition_id].to_i())
+  definition.update(params[:definition_input], @words.id)
   erb(:word)
 end
 
 delete('/words/:id/definition/:definition_id') do
-  definition = Definitions.find(params[:definition_id].to_i())
-  definition.delete
+  @definition = Definitions.find(params[:definition_id].to_i())
+  @definition.delete
   @word = Word.find(params[:id].to_i())
   erb(:word)
 end
