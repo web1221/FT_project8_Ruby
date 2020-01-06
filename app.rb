@@ -60,25 +60,21 @@ post('/words/:id/definition') do
 end
 
 get('/words/:id/definition/:definition_id') do
-  @words = Word.find(params[:id].to_i())
-  @definitions = Definitions.find(params[:definition_id])
-  @definition = Definitions.new(params[:definition_input], @words.id, nil)
+  @definition = Definitions.find(params[:definition_id].to_i)
   erb(:definition)
 end
 
 
 patch('/words/:id/definition/:definition_id') do
   @words = Word.find(params[:id].to_i())
-  @definition = Definitions.all
-  # binding.pry
   definition = Definitions.find(params[:definition_id].to_i())
   definition.update(params[:definition_input], @words.id)
   erb(:word)
 end
 
 delete('/words/:id/definition/:definition_id') do
-  @definition = Definitions.find(params[:definition_id].to_i())
-  @definition.delete
-  @word = Word.find(params[:id].to_i())
+  definition = Definitions.find(params[:definition_id].to_i())
+  definition.delete
+  @words = Word.find(params[:id].to_i())
   erb(:word)
 end
