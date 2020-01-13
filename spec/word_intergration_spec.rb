@@ -33,6 +33,15 @@ describe('create an word path', {:type => :feature}) do
     click_button('Update')
     expect(page).to have_content('Time')
     end
+  it 'allows a user to delete the word' do
+    test_word = Word.new('Charging', nil)
+    test_word.save
+    visit '/'
+    click_link('Charging')
+    click_link('Edit Word')
+    click_button('Delete Word')
+    expect(page).to have_content('Time')
+    end
   it 'allows a user to edit a definition' do
     test_word = Word.new("People", nil)
     test_word.save
