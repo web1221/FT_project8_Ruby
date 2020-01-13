@@ -36,17 +36,24 @@ describe('create an word path', {:type => :feature}) do
   it 'allows a user to edit a definition' do
     test_word = Word.new("People", nil)
     test_word.save
-    # test_definition = Definitions.new('human beings in general or considered collectively.', test_word.id, nil)
-    # test_definition.save
     id = test_word.id
-    # def_id = test_definition.id
     visit "/words/#{id}"
     fill_in('definition_input', :with => 'Human beings in general or considered collectively.')
     click_on('Add a definition')
-    save_and_open_page
     click_link('Human beings in general or considered collectively.')
     fill_in('definition_input', :with => 'Wow what a wonderful world')
     click_button('Update definition')
     expect(page).to have_content('Wow what a wonderful world')
+    end
+  it 'allows a user to delete a definition' do
+    test_word = Word.new("People", nil)
+    test_word.save
+    id = test_word.id
+    visit "/words/#{id}"
+    fill_in('definition_input', :with => 'Human beings in general or considered collectively.')
+    click_on('Add a definition')
+    click_link('Human beings in general or considered collectively.')
+    click_button('Delete definition')
+    expect(page).to have_content('')
     end
   end
